@@ -4,7 +4,9 @@ module.exports = function (api) {
     presets: [
       ["babel-preset-expo", { jsxImportSource: "nativewind" }],
       "nativewind/babel",
-      [["@babel/plugin-proposal-decorators", { legacy: true }]],
+    ],
+    plugins: [
+      ["@babel/plugin-proposal-decorators", { legacy: true }], // Add decorators support
     ],
   };
 };

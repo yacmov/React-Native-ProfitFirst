@@ -2,6 +2,8 @@ import { View, Text, TextInput, Button } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AccountsList from "@/components/AccountsList";
+import database, { accountsCollection } from "@/db";
+import Account from "@/model/Account";
 
 const AccountScreen = () => {
   const [name, setName] = useState("");
@@ -10,6 +12,19 @@ const AccountScreen = () => {
 
   const createAccount = () => {
     console.warn("Create account: ", name, cap, tap);
+  };
+
+  const onRead = async () => {
+    const account = await accountsCollection.query().fetch();
+    console.warn(account);
+
+    // await database.write(async () => {
+    //   await accountsCollection.create((account) => {
+    //     account.name = "Test";
+    //     account.cap = 10.5;
+    //     account.tap = 20.1;
+    //   });
+    // });
   };
 
   return (
@@ -27,6 +42,7 @@ const AccountScreen = () => {
         <TextInput value={tap} onChangeText={setTap} placeholder="TAP %" />
       </View>
       <Button title="Add account" onPress={createAccount} />
+      <Button title="Test" onPress={onRead} />
     </SafeAreaView>
   );
 };
