@@ -9,22 +9,26 @@ const AccountScreen = () => {
   const [name, setName] = useState("");
   const [cap, setCap] = useState("");
   const [tap, setTap] = useState("");
+  const get = () => [name, cap, tap];
+  const sets = () => [setName, setCap, setTap];
 
-  const createAccount = () => {
+  const createAccount = async () => {
     console.warn("Create account: ", name, cap, tap);
+    await database.write(async () => {
+      await accountsCollection.create((account) => {
+        account.name = name;
+        account.cap = Number.parseFloat(cap);
+        account.tap = Number.parseFloat(tap);
+      });
+    });
+    sets().forEach((set) => {
+      set("");
+    });
   };
 
   const onRead = async () => {
-    const account = await accountsCollection.query().fetch();
-    console.warn(account);
-
-    // await database.write(async () => {
-    //   await accountsCollection.create((account) => {
-    //     account.name = "Test";
-    //     account.cap = 10.5;
-    //     account.tap = 20.1;
-    //   });
-    // });
+    const accounts = await accountsCollection.query().fetch();
+    console.warn(accounts);
   };
 
   return (

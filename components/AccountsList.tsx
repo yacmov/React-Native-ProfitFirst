@@ -1,14 +1,23 @@
 import { View, Text, FlatList } from "react-native";
 import React from "react";
 import AccountListItem from "./AccountListItem";
+import { accountsCollection } from "@/db";
+import Account from "@/model/Account";
 
-const AccountsList = () => {
+import { withObservables } from "@nozbe/watermelondb/react";
+
+const AccountsList = ({ accounts }: { accounts: Account[] }) => {
   return (
     <FlatList
       contentContainerClassName="gap-2"
-      data={[1, 2, 3]}
-      renderItem={() => <AccountListItem />}
+      data={accounts}
+      renderItem={({ item }) => <AccountListItem account={item} />}
     />
   );
 };
-export default AccountsList;
+
+const enhance = withObservables([], () => ({
+  accounts: accountsCollection.query(),
+}));
+
+export default enhance(AccountsList);
