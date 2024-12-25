@@ -42,6 +42,7 @@ const AccountScreen = () => {
         <Text>Name</Text>
         <Text>Cap</Text>
         <Text>TAP</Text>
+        <Text>DEL</Text>
       </View>
 
       <AccountsList />
