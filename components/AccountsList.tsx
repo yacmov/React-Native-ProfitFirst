@@ -3,7 +3,6 @@ import React from "react";
 import AccountListItem from "./AccountListItem";
 import { accountsCollection } from "@/db";
 import Account from "@/model/Account";
-
 import { withObservables } from "@nozbe/watermelondb/react";
 
 const AccountsList = ({ accounts }: { accounts: Account[] }) => {

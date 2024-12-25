@@ -26,9 +26,14 @@ const AccountScreen = () => {
     });
   };
 
-  const onRead = async () => {
-    const accounts = await accountsCollection.query().fetch();
-    console.warn(accounts);
+  const onTest = async () => {
+    await database.write(async () => {
+      const accounts = await accountsCollection.query().fetch();
+      const account = accounts[0];
+      account.update((updatedAccount) => {
+        updatedAccount.name = "3";
+      });
+    });
   };
 
   return (
@@ -46,7 +51,6 @@ const AccountScreen = () => {
         <TextInput value={tap} onChangeText={setTap} placeholder="TAP %" />
       </View>
       <Button title="Add account" onPress={createAccount} />
-      <Button title="Test" onPress={onRead} />
     </SafeAreaView>
   );
 };
