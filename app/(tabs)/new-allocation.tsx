@@ -2,11 +2,13 @@ import { View, Text, TextInput, Button } from "react-native";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import database, { allocationsCollection } from "@/db";
+import database, { accountsCollection, allocationsCollection } from "@/db";
+import { withObservables } from "@nozbe/watermelondb/react";
+import Account from "@/model/Account";
 
-const NewAllocationScreen = () => {
+const NewAllocationScreen = ({ accounts }: { accounts: Account[] }) => {
   const router = useRouter();
-  const [income, setIncome] = useState("");
+  const [income, setIncome] = useState("0");
 
   const save = async () => {
     await database.write(async () => {
@@ -29,9 +31,22 @@ const NewAllocationScreen = () => {
           placeholder="123"
         />
       </View>
+      {accounts.map((account) => (
+        <View key={account.id} className="flex-row items-center">
+          <Text className="flex-1">
+            {account.name}: {account.cap}
+          </Text>
+          <Text>$ {(Number.parseFloat(income) * account.cap) / 100}</Text>
+        </View>
+      ))}
+
       <Button onPress={save} title="Save" />
     </SafeAreaView>
   );
 };
 
-export default NewAllocationScreen;
+const enhance = withObservables([], () => ({
+  accounts: accountsCollection.query(),
+}));
+
+export default enhance(NewAllocationScreen);
