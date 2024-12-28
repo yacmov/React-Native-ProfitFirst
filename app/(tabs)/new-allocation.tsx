@@ -1,10 +1,11 @@
 import { View, Text, TextInput, Button } from "react-native";
 import React, { useState } from "react";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import database, { allocationsCollection } from "@/db";
 
 const NewAllocationScreen = () => {
+  const router = useRouter();
   const [income, setIncome] = useState("");
 
   const save = async () => {
@@ -13,6 +14,8 @@ const NewAllocationScreen = () => {
         newAllocation.income = Number.parseFloat(income);
       });
     });
+    setIncome("");
+    router.replace("/(tabs)/allocations");
   };
 
   return (
