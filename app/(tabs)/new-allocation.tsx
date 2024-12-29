@@ -2,7 +2,11 @@ import { View, Text, TextInput, Button } from "react-native";
 import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import database, { accountsCollection, allocationsCollection } from "@/db";
+import database, {
+  accountsCollection,
+  allocationsCollection,
+  accountAllocationCollection,
+} from "@/db";
 import { withObservables } from "@nozbe/watermelondb/react";
 import Account from "@/model/Account";
 
@@ -12,10 +16,22 @@ const NewAllocationScreen = ({ accounts }: { accounts: Account[] }) => {
 
   const save = async () => {
     await database.write(async () => {
-      allocationsCollection.create((newAllocation) => {
+      const allocation = await allocationsCollection.create((newAllocation) => {
         newAllocation.income = Number.parseFloat(income);
       });
+
+      await Promise.all(
+        accounts.map((account) =>
+          accountAllocationCollection.create((item) => {
+            item.account.set(account);
+            item.allocation.set(allocation);
+            item.cap = account.cap;
+            item.amount = (allocation.income * account.cap) / 100;
+          })
+        )
+      );
     });
+    // Allocation.create(Number.parseFloat(income));
     setIncome("");
     router.replace("/(tabs)/allocations");
   };
