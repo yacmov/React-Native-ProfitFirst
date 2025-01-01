@@ -9,15 +9,18 @@ import database, {
 } from "@/db";
 import { withObservables } from "@nozbe/watermelondb/react";
 import Account from "@/model/Account";
+import { useAuth } from "@/providers/AuthProvider";
 
 const NewAllocationScreen = ({ accounts }: { accounts: Account[] }) => {
   const router = useRouter();
   const [income, setIncome] = useState("0");
+  const { user } = useAuth();
 
   const save = async () => {
     await database.write(async () => {
       const allocation = await allocationsCollection.create((newAllocation) => {
         newAllocation.income = Number.parseFloat(income);
+        newAllocation.userId = String(user?.id);
       });
 
       await Promise.all(
@@ -27,6 +30,7 @@ const NewAllocationScreen = ({ accounts }: { accounts: Account[] }) => {
             item.allocation.set(allocation);
             item.cap = account.cap;
             item.amount = (allocation.income * account.cap) / 100;
+            item.userId = String(user?.id);
           })
         )
       );

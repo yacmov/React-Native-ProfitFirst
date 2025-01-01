@@ -18,7 +18,7 @@ const AccountListItem = ({ account }: AccountListItem) => {
 
   return (
     <View className="bg-white p-4 flex-row justify-between">
-      <Text className="flex-1 font-bold">{account.name}</Text>
+      <Text className="flex-1 font-bold">{account.userId}</Text>
       <Text className="flex-1">{account.cap}%</Text>
       <Text className="flex-1">{account.tap}%</Text>
       <AntDesign name="delete" size={18} color="gray" onPress={onDelete} />

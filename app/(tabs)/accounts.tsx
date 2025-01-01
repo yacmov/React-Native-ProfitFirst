@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AccountsList from "@/components/AccountsList";
 import database, { accountsCollection } from "@/db";
 import Account from "@/model/Account";
+import { useAuth } from "@/providers/AuthProvider";
 
 const AccountScreen = () => {
   const [name, setName] = useState("");
@@ -12,6 +13,8 @@ const AccountScreen = () => {
   const get = () => [name, cap, tap];
   const sets = () => [setName, setCap, setTap];
 
+  const { user } = useAuth();
+
   const createAccount = async () => {
     console.warn("Create account: ", name, cap, tap);
     await database.write(async () => {
@@ -19,6 +22,7 @@ const AccountScreen = () => {
         account.name = name;
         account.cap = Number.parseFloat(cap);
         account.tap = Number.parseFloat(tap);
+        account.userId = String(user?.id);
       });
     });
     sets().forEach((set) => {
