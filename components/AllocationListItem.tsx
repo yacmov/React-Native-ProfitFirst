@@ -4,6 +4,7 @@ import Allocation from "@/model/Allocation";
 import { withObservables } from "@nozbe/watermelondb/react";
 import AccountAllocation from "@/model/AccountAllocation";
 import AccountAllocationItem from "./AccountAllocationItem";
+import { accountAllocationCollection } from "@/db";
 
 type AllocationListItem = {
   allocation: Allocation;
@@ -24,7 +25,7 @@ const AllocationListItem = ({
           $ {allocation.income}
         </Text>
       </View>
-      <View className="gap-2 py-[5]">
+      <View key={accountAllocations.length} className="gap-2 py-[5]">
         {accountAllocations.map((item) => (
           <AccountAllocationItem accountAllocation={item} />
         ))}
