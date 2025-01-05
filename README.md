@@ -2,20 +2,20 @@
 
 This portfolio is created for learning and educational purpose with [notJust․dev](https://www.youtube.com/@notjustdev)
 
-# 📖 Table of Contents
+# <a name="table">📖 Table of Contents</a>
 
-1. [🎯 Purpose](#🎯-purpose)
-1. [📸 Screenshots](#📸-screenshots)
-1. [📚 What did I learn with this project?](#📚-what-did-i-learn-with-this-project)
-1. [💻 Used Programs](#💻-used-programs)
-1. [📁 Folder Structure](#📁-folder-structure)
-1. [※ Reference](#※-reference)
+1. [🎯 Purpose](#purpose)
+1. [📸 Screenshots](#screenshots)
+1. [📚 What did I learn with this project?](#learn)
+1. [💻 Used Programs](#programs)
+1. [📁 Folder Structure](#folder)
+1. [※ Reference](#reference)
 
 <br>
 
-## 🎯 Purpose
+## <a name="purpose">🎯 Purpose</a>
 
-[Back](#📖-table-of-contents)<br>
+[Back](#table)<br>
 
 ### Portfolio: Learning Backend Logics with WatermelonDB
 
@@ -27,7 +27,9 @@ This portfolio aims to deepen my understanding of backend logics using Watermelo
 <details>
 <summary>
 
-## 📸 Screenshots
+## <a name="screenshots">📸 Screenshots</a>
+
+[Back](#table)<br>
 
 </summary>
 
@@ -40,9 +42,9 @@ This portfolio aims to deepen my understanding of backend logics using Watermelo
 <hr>
 <br>
 
-## 📚 What did I learn with this project?
+## <a name="learn">📚 What did I learn with this project?</a>
 
-[Back](#📖-table-of-contents)<br>
+[Back](#table)<br>
 
 <details>
 <summary>
@@ -122,9 +124,9 @@ For optimal performance and user experience:
 <hr>
 <br>
 
-## 💻 Used programs
+## <a name="programs">💻 Used programs</a>
 
-[Back](#📖-table-of-contents)<br>
+[Back](#table)<br>
 
 ### React Native (TypeScripts)
 
@@ -157,9 +159,9 @@ For optimal performance and user experience:
 <details>
 <summary>
 
-## 📁 Folder Structure
+## <a name="folder">📁 Folder Structure</a>
 
-[Back](#📖-table-of-contents)<br>
+[Back](#table)<br>
 
 </summary>
 
@@ -170,9 +172,9 @@ For optimal performance and user experience:
 <hr>
 <br>
 
-## ※ Reference
+## <a name="reference">※ Reference</a>
 
-[Back](#📖-table-of-contents)<br>
+[Back](#table)<br>
 
 <details>
 <summary>
@@ -200,7 +202,7 @@ For optimal performance and user experience:
 <details>
 <summary>
 
-### <image style="background:white; padding:4;" width="50" src="./screenshots/logo-wordmark.svg"/>
+### Expo <image style="background:white; padding:4;" width="50" src="./screenshots/logo-wordmark.svg"/>
 
 </summary>
 
@@ -220,7 +222,7 @@ For optimal performance and user experience:
 <details>
 <summary>
 
-### <image style="background:black; padding:4;" width="100" src="https://supabase.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsupabase-logo-wordmark--dark.b36ebb5f.png&w=256&q=75&dpl=dpl_XN51ria8t2JcMGgJCQpsS6Rk3uRa"/>
+### Supabase <image style="background:black; padding:4;" width="100" src="https://supabase.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsupabase-logo-wordmark--dark.b36ebb5f.png&w=256&q=75&dpl=dpl_XN51ria8t2JcMGgJCQpsS6Rk3uRa"/>
 
 </summary>
 
